@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn1 :c-info="info"></cpn1>
+</div>
+
+<template id="cpn1">
+    <div>
+        {{cInfo}}
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            info: {
+                name: "Zhaoyongchi",
+                age: 18,
+                height: 178
+            }
+        },
+        components: {
+            cpn1: {
+                template: "#cpn1",
+                props: {
+                    // 驼峰属性：由于标签在html中会被转成小写，所以使用标签时要用-隔开
+                    cInfo: {
+                        type: Object,
+                        default() {
+                            return {}
+                        }
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
+
+<!--
+
+-->

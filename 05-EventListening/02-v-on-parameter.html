@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{counter}}</h2>
+    <button v-on:click="counter++">+</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好",
+            counter: 0
+        },
+        methods: {
+            increment() {
+                this.counter++;
+            },
+
+        }
+    })
+</script>
+</body>
+</html>
+
+<!--
+    1 当事件函数没有参数时，加不加效果好意义一样
+    2 事件函数本身需要函数，但是时间定义时候省略了小括号，传入事件
+    3 事件函数需要多个参数时，默认情况第一个参数为event，$event表示浏览器产生的event对象
+-->

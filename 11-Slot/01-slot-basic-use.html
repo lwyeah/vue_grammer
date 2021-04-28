@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <cpn1><button>按钮</button></cpn1>
+    <cpn1>哈哈哈</cpn1>
+    <cpn1><i>呵呵呵</i></cpn1>
+    <cpn1></cpn1>
+    <!--  多个值同时  -->
+    <cpn1><p>我是段落</p><i>我是斜体</i><h2>我是标题</h2></cpn1>
+</div>
+
+<!--<template id="cpn1">-->
+<!--    <div>-->
+<!--        <h2>我是子组件</h2>-->
+<!--        <p>我是内容</p>-->
+<!--        <slot></slot>-->
+<!--    </div>-->
+<!--</template>-->
+
+<!-- 添加Slot默认值 -->
+<template id="cpn1">
+    <div>
+        <h2>我是子组件</h2>
+        <p>我是内容</p>
+        <slot><button>按钮</button></slot>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+    // 子组件
+    const cpn = {
+        template: "#cpn1"
+    }
+
+    // 父组件
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀"
+        },
+        components: {
+            cpn1: cpn
+        }
+    })
+</script>
+</body>
+</html>
+
+<!--
+
+-->

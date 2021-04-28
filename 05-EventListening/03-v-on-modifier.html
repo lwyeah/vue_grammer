@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button @click.stop="doThis"></button>
+    <button @click.prevent="doThis"></button>
+    <form @submit.prevent></form>
+    <button @click.stop.prevent="doThis"></button>
+    <input @keyup.enter="onEnter">
+    <input @keyup.13="onEnter">
+    <button @click.once="doThis"></button>
+    <!--
+        .native 定义组件时候使用
+    -->
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn1 :movies="movies" :message="message"></cpn1>
+    <cpn1></cpn1>
+</div>
+
+<template id="cpn1">
+    <div>
+        <li v-for="item in movies">{{item}}</li>
+        {{message}}
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "你好呀",
+            movies: ['海王', '海贼王']
+        },
+        components: {
+            cpn1: {
+                template: "#cpn1",
+                // props: ['movies', 'message'],
+
+                //类型限制
+                // props: {
+                //     movies: Array,
+                //     message: String
+                // },
+                // 提供默认值和必传值设定
+                props: {
+                    // 类型是Object or Array时，默认值必须是一个函数
+                    movies: {
+                        type: Array,
+                        default: function () {
+                            return [1, 2, 3]
+                        },
+                        require: true
+                    },
+                    message: {
+                        type: String,
+                        default: "aaa",
+                        require: true
+                    },
+                    propsA: [String, Number],
+                    propsB: {
+                        validator(value) {
+                        }
+                    }
+                },
+                data: function () {
+                    return {
+                        title: "Zhaoyongchi"
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
+
+<!--
+    1. 组件之间需要传递数据
+    2. 父->子传播，需要props属性 (数组形式, 对象-类型限制(自定义类型), 对象-提供默认值)(对象key: type, required, default)
+    3. 子->父传播，需要自定义事件
+-->

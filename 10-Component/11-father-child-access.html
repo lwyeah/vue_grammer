@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <cpn1 ref="aaa"></cpn1>
+    <cpn1 ref="bbb"></cpn1>
+    <cpn1 ref="ccc"></cpn1>
+    <button @click="btnClick">按钮</button>
+</div>
+
+<template id="cpn1">
+    <div>
+        我是子组件
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+    // 子组件
+    const cpn = {
+        template: "#cpn1",
+        data() {
+            return {
+                categories: [
+                    {id: "aaa", name: "热门推荐"},
+                    {id: "bbb", name: "手机数码"},
+                    {id: "ccc", name: "家用家电"}
+                ]
+            }
+        },
+        methods: {
+            showMessage() {
+                console.log("showmessage");
+            }
+        }
+    }
+
+    // 父组件
+    const app = new Vue({
+        el: "#app",
+        data: {
+            info: {
+                name: "Zhaoyongchi",
+                age: 18,
+                height: 178
+            }
+        },
+        methods: {
+            btnClick() {
+                // 1. $children
+                // console.log(this.$children)
+                // for (let c of this.$children) {
+                //     console.log(c.categories)
+                //     c.showMessage()
+                // }
+                // 2. $refs
+                console.log(this.$refs.aaa)
+            }
+        },
+        components: {
+            cpn1: cpn
+        }
+    })
+</script>
+</body>
+</html>
+
+<!--
+
+-->
